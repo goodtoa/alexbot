@@ -18,35 +18,4 @@ def reply_to_post(page, post_url, job_title):
     page.wait_for_load_state("networkidle")
     time.sleep(2)
     reply_button = page.query_selector("button.reply-button, a.reply-button, #replylink")
-    if reply_button:
-        reply_button.click()
-        time.sleep(2)
-        email_field = page.query_selector("input[type=email]")
-        if email_field:
-            email_field.fill(ALEX_EMAIL)
-        message_field = page.query_selector("textarea")
-        if message_field:
-            reply = generate_response(job_title)
-            message_field.fill(reply)
-            submit = page.query_selector("button[type=submit]")
-            if submit:
-                submit.click()
-                print("Reply sent for:", job_title)
-                time.sleep(random.randint(30, 60))
-    else:
-        print("No reply button for:", job_title)
-
-with sync_playwright() as p:
-    browser = p.chromium.launch(headless=True, args=["--no-sandbox"])
-    context = browser.new_context(user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
-    page = context.new_page()
-    page.goto("https://newyork.craigslist.org/search/cpg")
-    page.wait_for_load_state("networkidle")
-    posts = page.query_selector_all("a.posting-title")
-    for post in posts[:3]:
-        title = post.inner_text()
-        url = post.get_attribute("href")
-        print("Found job:", title)
-        reply_to_post(page, url, title)
-        time.sleep(random.randint(5, 10))
-    browser.close()
+    if reply_button​​​​​​​​​​​​​​​​
