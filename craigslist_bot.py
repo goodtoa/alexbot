@@ -17,7 +17,7 @@ def reply_to_post(page, post_url, job_title):
     page.goto(post_url)
     page.wait_for_load_state("networkidle")
     time.sleep(2)
-    reply_button = page.query_selector("button.reply-button, a.reply-button, #replylink")
+    reply_button = page.query_selector(".reply-button")
     if reply_button:
         reply_button.click()
         time.sleep(2)
