@@ -19,7 +19,7 @@ def generate_response(post_text):
     return response.choices[0].message.content
 
 def load_cookies(context):
-    with open("/root/fb_cookies.json", "r") as f:
+    with open("/root/fb_cookies_fixed.json", "r") as f:
         cookies = json.load(f)
     for cookie in cookies:
         cookie.pop("storeId", None)
