@@ -25,7 +25,7 @@ def login(page):
     page.wait_for_load_state("networkidle")
     page.fill("input[name=email]", FB_EMAIL)
     page.fill("input[name=pass]", FB_PASS)
-    page.click("button[name=login]")
+    page.click("button[type=submit]")
     page.wait_for_load_state("networkidle")
     time.sleep(3)
     print("Logged in")
